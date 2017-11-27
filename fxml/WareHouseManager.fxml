@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="projtwo.fxml.WareHouseManagerController">
+   <children>
+      <Text layoutX="231.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warehouse MANAGER" />
+      <TextField fx:id="filename" layoutX="289.0" layoutY="54.0" />
+      <Button fx:id="updateWareHouseButton" layoutX="152.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleUpdateWareHouse" text="Update WareHouse" />
+      <Button fx:id="displayByName" layoutX="33.0" layoutY="142.0" mnemonicParsing="false" onAction="#HandleDisplayByName" text="Display By Name" />
+      <Button fx:id="displayByNum" layoutX="402.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleDisplayByNum" text="Display By Part Number" />
+      <TextArea layoutX="33.0" layoutY="177.0" prefHeight="200.0" prefWidth="533.0" />
+      <Text layoutX="469.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FileName" />
+   </children>
+</AnchorPane>
