@@ -105,6 +105,36 @@ public class WareHouse {
         
         Writer.writeFile(wareHouseName,bps);
     }
+    public BikePart findPartName(String s){
+        for(BikePart bp: bps){
+            if(bp.getName().equals(s))
+                return bp;
+        }
+        return null;
+    }
+    
+    public BikePart findPartNum(int n){
+        for(BikePart bp: bps){
+            if(bp.getNum()==n)
+                return bp;
+        }
+        return null;
+    }
+    public String read(String fileName){
+    String out="";
+    System.out.print("Enter the name of the file you would like to read:");
+    ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName+".txt"));
+    ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
+    if(bps.isEmpty()){
+        Writer.writeFile("warehouseDB.txt", parts);
+        return("successfully created");
+    }
+    else{
+        Writer.updateFile("warehouseDB.txt", parts);
+        return("successfully updated");
+    }
+
+    }
 }
 
     

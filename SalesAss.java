@@ -5,7 +5,17 @@
  */
 package projtwo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,19 +23,33 @@ import java.util.ArrayList;
  */
 public class SalesAss extends User{
     
-    private ArrayList<Sale> sold = new ArrayList<>();
+    private Invoice sold;
+    private WareHouse saWH;
+    private Fleet fleet= new Fleet(); //singlton get instance
+    
     
     public SalesAss(String f, String l, String e, String u, String p){
         super(f,l,e,u,p);
     }
-    public void loadVan(char van){
+    public void loadWH(String fileName){
         
     }
-    public void generateInvoice(){
-        
+
+        public void fillWH(String WHName) throws FileNotFoundException{
+        saWH=new WareHouse(WHName);
+        //call this every time you open a warehouse manager window
     }
-    public void sell(BikePart bp, int quantity){
-        
+    public void vanSwap(String fileName){
+        fleet.swap(fileName);
     }
-    
+    public String genInvoice(Date d1,Date d2){
+        return sold.toString(d1,d2);
+    }
+    public BikePart Sell(int num, int quan){
+        for(int i=0;i<quan;i++ ){
+            saWH.findPartNum(num).setQuantity(saWH.findPartNum(num).getQuantity()-1);
+            
+        }
+        return saWH.findPartNum(num);
+    }
 }

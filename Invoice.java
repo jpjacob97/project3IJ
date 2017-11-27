@@ -14,17 +14,18 @@ import java.util.Date;
  * @author jacobpetersen
  */
 public class Invoice {
-    private ArrayList<Sale> sList;
+    private ArrayList<SalesItem> sList;
     private String saName;
     File file;
     public String getSA(){
         return saName;
     }
-    public String toString(Date d1,Date d2){
+    public String toString(String d1,String d2){
+        //make the dates.
         return null;
         // the project.
     }    
-    public void add(Sale s){
+    public void add(SalesItem s){
         sList.add(s);
     }
     public void readIFile(){
@@ -33,4 +34,5 @@ public class Invoice {
     public void writeIFile(){
         //updating the file after sales
     }
+    
 }

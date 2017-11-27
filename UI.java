@@ -160,7 +160,7 @@ public class UI {
     public String read(String fileName){
         String out="";
         System.out.print("Enter the name of the file you would like to read:");
-        ArrayList<BikePart> bps= new ArrayList(Reader.readFile("warehouseDB.txt"));
+        ArrayList<BikePart> bps= new ArrayList(Reader.readFile());
         ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
         if(bps.isEmpty()){
             Writer.writeFile("warehouseDB.txt", parts);

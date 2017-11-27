@@ -5,18 +5,34 @@
  */
 package projtwo;
 
+import java.util.Date;
+
 /**
  *
  * @author jariv
  */
-public class Sale {
+public class SalesItem {
 
     private BikePart bp;
     private int quantity;
+    private Date date;
 
-    public Sale(BikePart b, int q) {
+    public SalesItem(BikePart b, int q, Date d) {
         bp = b;
         quantity = q;
+        date=d;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public BikePart getBp() {
+        return bp;
     }
     
 }
