@@ -1,27 +1,78 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projtwo.fxml;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
-/**
- * FXML Controller class
- *
- * @author jacobpetersen
- */
-public class SalesAssController implements Initializable {
+public class SalesAssController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private AnchorPane partNameSell;
+
+    @FXML
+    private Button vanExchangeButton;
+
+    @FXML
+    private Button displayByName;
+
+    @FXML
+    private Button displayByNum;
+
+    @FXML
+    private TextField partName;
+
+    @FXML
+    private TextField partNum;
+
+    @FXML
+    private Button sortName;
+
+    @FXML
+    private Button sortNum;
+
+    @FXML
+    private Button sellButton;
+
+    @FXML
+    private TextField quantity;
+
+    @FXML
+    private TextArea output;
+
+    @FXML
+    private TextField fileName;
+
+    @FXML
+    void HandleDisplayByName(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleDisplayByNum(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleSell(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleSortName(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleSortNum(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleVanExchange(ActionEvent event) {
+
+    }
+
 }

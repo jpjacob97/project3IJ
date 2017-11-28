@@ -12,9 +12,13 @@
       <Text layoutX="231.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warehouse MANAGER" />
       <TextField fx:id="filename" layoutX="289.0" layoutY="54.0" />
       <Button fx:id="updateWareHouseButton" layoutX="152.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleUpdateWareHouse" text="Update WareHouse" />
-      <Button fx:id="displayByName" layoutX="33.0" layoutY="142.0" mnemonicParsing="false" onAction="#HandleDisplayByName" text="Display By Name" />
-      <Button fx:id="displayByNum" layoutX="402.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleDisplayByNum" text="Display By Part Number" />
-      <TextArea layoutX="33.0" layoutY="177.0" prefHeight="200.0" prefWidth="533.0" />
+      <Button fx:id="displayByName" layoutX="170.0" layoutY="96.0" mnemonicParsing="false" onAction="#HandleDisplayByName" text="Display By Name" />
+      <Button fx:id="displayByNum" layoutX="128.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleDisplayByNum" text="Display By Part Number" />
+      <TextArea fx:id="output" layoutX="33.0" layoutY="177.0" prefHeight="200.0" prefWidth="533.0" />
       <Text layoutX="469.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FileName" />
+      <TextField fx:id="partName" layoutX="289.0" layoutY="96.0" />
+      <TextField fx:id="partNum" layoutX="289.0" layoutY="143.0" />
+      <Text layoutX="465.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Name" />
+      <Text layoutX="458.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Number" />
    </children>
 </AnchorPane>

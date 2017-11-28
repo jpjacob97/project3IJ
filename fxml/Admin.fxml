@@ -12,11 +12,11 @@
 <AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="projtwo.AdminController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="258.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" />
+      <Text layoutX="295.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" />
       <Button fx:id="CreateUserButton" layoutX="15.0" layoutY="124.0" mnemonicParsing="false" onAction="#handleCreateUserButton" prefHeight="27.0" prefWidth="162.0" text="Create User" />
       <Button fx:id="deleteUserButton" layoutX="15.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleDeleteUserButton" prefHeight="27.0" prefWidth="162.0" text="Delete User" />
-      <Button fx:id="changeUserPass" layoutX="15.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleChangeUserPass" text="Change User Password" />
-      <TextArea layoutX="34.0" layoutY="470.0" prefHeight="200.0" prefWidth="533.0" />
+      <Button fx:id="changeUserPass" layoutX="15.0" layoutY="387.0" mnemonicParsing="false" onAction="#HandleChangeUserPass" text="Change User Password" />
+      <TextArea fx:id="output" layoutX="34.0" layoutY="470.0" prefHeight="200.0" prefWidth="533.0" />
       <Text layoutX="34.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLUNDER response:" />
       <TextField fx:id="userNameField" layoutX="258.0" layoutY="63.0" />
       <TextField fx:id="passwordField" layoutX="258.0" layoutY="90.0" />
