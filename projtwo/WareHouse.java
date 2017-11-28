@@ -7,6 +7,8 @@ package projtwo;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,7 +138,18 @@ public class WareHouse {
 
     }
     
+    public void sortByName(){
+        Collections.sort(bps, new Comparator<BikePart>(){
+                @Override
+                public int compare(BikePart bp1, BikePart bp2) {
+                    return bp1.getName().compareToIgnoreCase(bp2.getName());
+                }
+                });
+    }
     
+    public void sortByNum(){
+        Collections.sort(bps);
+    }
     
 }
 

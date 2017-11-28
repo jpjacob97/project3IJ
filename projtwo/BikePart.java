@@ -6,7 +6,7 @@ package projtwo;
  * This class stores and manipulates the data needed for a bike part.
  * @author jacobpetersen
  */
-public class BikePart {
+public class BikePart implements Comparable<BikePart> {
     private String partName;
     private int partNum;
     private double listPrice;
@@ -148,5 +148,16 @@ public class BikePart {
             return listPrice;
     }
     
+    @Override
+    public int compareTo(BikePart bp1) {
+        if(this.partNum == bp1.partNum){
+            return 0;
+        }
+        if(this.partNum > bp1.partNum){
+            return 1;
+        }
+        else
+            return -1;
+    }
     
 }
