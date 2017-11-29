@@ -7,6 +7,8 @@ package projtwo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,8 +22,8 @@ import java.util.logging.Logger;
  */
 public class Fleet {
        private ArrayList<WareHouse> fleet;
-       private File file;
-       public Fleet(ArrayList l, String filename){
+       private File file=new File("fleet.txt");
+       public Fleet(){
            
        }
        public WareHouse findwh(String n){
@@ -89,10 +91,20 @@ public class Fleet {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
         }
-       }
-       public void update(){
-           //update the file
-       }
+    }
+    public void readFFile(){
+        
+    }
+    public void update() throws FileNotFoundException{
+        try {
+            PrintWriter writer = new PrintWriter("fleet.txt", "UTF-8");
+            for(WareHouse wh: fleet){
+                writer.println(wh.getName());
+             }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Fleet.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    }
        
       
 }

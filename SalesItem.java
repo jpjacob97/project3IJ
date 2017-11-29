@@ -15,9 +15,9 @@ public class SalesItem {
 
     private BikePart bp;
     private int quantity;
-    private Date date;
+    private String date;
 
-    public SalesItem(BikePart b, int q, Date d) {
+    public SalesItem(BikePart b, int q, String d) {
         bp = b;
         quantity = q;
         date=d;
@@ -27,12 +27,18 @@ public class SalesItem {
         return quantity;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
     public BikePart getBp() {
         return bp;
     }
+
+    @Override
+    public String toString() {
+        return bp + ","+ quantity + "," + date;
+    }
+    
     
 }

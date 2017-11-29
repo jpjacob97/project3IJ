@@ -28,14 +28,16 @@ public class SalesAss extends User{
     private Fleet fleet= new Fleet(); //singlton get instance
     
     
-    public SalesAss(String f, String l, String e, String u, String p){
+    public SalesAss(String f, String l, String e, String u, String p) throws FileNotFoundException{
         super(f,l,e,u,p);
+        fillWH(saWH.getName());
+        
     }
     public void loadWH(String fileName){
         
     }
 
-        public void fillWH(String WHName) throws FileNotFoundException{
+    public void fillWH(String WHName) throws FileNotFoundException{
         saWH=new WareHouse(WHName);
         //call this every time you open a warehouse manager window
     }

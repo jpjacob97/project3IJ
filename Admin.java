@@ -5,18 +5,22 @@
  */
 package projtwo;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author jariv
  */
-public class Admin extends User{
-    private Employee employed=new Employee();
+public class Admin extends User {
+    Employee employed= null;
     
-    public Admin(String f, String l, String e, String u, String p){
+    public Admin(String f, String l, String e, String u, String p) throws FileNotFoundException{
         super(f,l,e,u,p);
+        final Employee employed=new Employee();
+
     }
     
-    public void createUser(String f, String l, String e, String u, String p){
+    public void createUser(String f, String l, String e, String u, String p) throws FileNotFoundException{
         User newUser=new User( f,  l,  e,  u,  p);
         employed.addUser(newUser);
         

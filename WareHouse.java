@@ -77,17 +77,15 @@ public class WareHouse {
      * @param name
      * @return the part sold.
      */
-    public BikePart sell(int num){
-        BikePart x= new BikePart("this",10,10,10,true,10);
+    public BikePart sell(int num, int quantity){
         for(BikePart bp:bps){
             if(num==bp.getNum()){
-                bp.setQuantity(bp.getQuantity() -1);
+                bp.setQuantity(bp.getQuantity() -quantity);
                 updateFile();
                 return bp;
             }
-            
         }
-        return x;
+        return null;
     }
     
     /**
@@ -121,8 +119,6 @@ public class WareHouse {
         return null;
     }
     public String read(String fileName){
-    String out="";
-    System.out.print("Enter the name of the file you would like to read:");
     ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName+".txt"));
     ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
     if(bps.isEmpty()){

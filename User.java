@@ -11,8 +11,8 @@ package projtwo;
  */
 public class User {
 
-    private String fName; //first name
-    private String lName; //last name
+    private final String fName; //first name
+    private final String lName; //last name
     private String email; //email
     private final String uName; //user name
     private String pass; //password
