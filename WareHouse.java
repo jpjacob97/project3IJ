@@ -7,6 +7,8 @@ package projtwo;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,15 +79,17 @@ public class WareHouse {
      * @param name
      * @return the part sold.
      */
-    public BikePart sell(int num, int quantity){
+    public BikePart sell(int num){
+        BikePart x= new BikePart("this",10,10,10,true,10);
         for(BikePart bp:bps){
             if(num==bp.getNum()){
-                bp.setQuantity(bp.getQuantity() -quantity);
+                bp.setQuantity(bp.getQuantity() -1);
                 updateFile();
                 return bp;
             }
+            
         }
-        return null;
+        return x;
     }
     
     /**
@@ -119,6 +123,8 @@ public class WareHouse {
         return null;
     }
     public String read(String fileName){
+    String out="";
+    System.out.print("Enter the name of the file you would like to read:");
     ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName+".txt"));
     ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
     if(bps.isEmpty()){
@@ -131,7 +137,20 @@ public class WareHouse {
     }
 
     }
+    
+    public void sortByName(){
+        Collections.sort(bps, new Comparator<BikePart>(){
+                @Override
+                public int compare(BikePart bp1, BikePart bp2) {
+                    return bp1.getName().compareToIgnoreCase(bp2.getName());
+                }
+                });
+    }
+    
+    public void sortByNum(){
+        Collections.sort(bps);
+    }
+    
 }
 
     
-
