@@ -37,9 +37,9 @@ public class Employee {
         //iterate through and pop the user passed
         
     }
-    public User findUser(User u){
+    public User findUser(String uName){
         for (User x: users){
-            if(u.getUserName().equals(x.getUserName())){
+            if(uName.equals(x.getUserName())){
                 return x;
             }
         }
@@ -73,7 +73,7 @@ public class Employee {
             }
         }
     }
-    public void write(String s) throws FileNotFoundException{
+    public void write() throws FileNotFoundException{
             PrintWriter writer;
         try {
             writer = new PrintWriter("employedPersons.txt", "UTF-8");

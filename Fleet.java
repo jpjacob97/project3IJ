@@ -23,8 +23,8 @@ import java.util.logging.Logger;
 public class Fleet {
        private ArrayList<WareHouse> fleet;
        private File file=new File("fleet.txt");
-       public Fleet(){
-           
+       public Fleet() throws FileNotFoundException{
+           readFFile();
        }
        public WareHouse findwh(String n){
            for(WareHouse wh: fleet){
@@ -92,8 +92,13 @@ public class Fleet {
             Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void readFFile(){
-        
+    public void readFFile() throws FileNotFoundException{
+            Scanner read = new Scanner(file);
+            while (read.hasNextLine()) {
+                String line = read.nextLine();
+                WareHouse wh=new WareHouse(line);
+                fleet.add(wh);
+            }    
     }
     public void update() throws FileNotFoundException{
         try {

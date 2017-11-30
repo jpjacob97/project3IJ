@@ -15,9 +15,9 @@ public class SalesItem {
 
     private BikePart bp;
     private int quantity;
-    private String date;
+    private Date date;
 
-    public SalesItem(BikePart b, int q, String d) {
+    public SalesItem(BikePart b, int q, Date d) {
         bp = b;
         quantity = q;
         date=d;
@@ -27,7 +27,7 @@ public class SalesItem {
         return quantity;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -40,5 +40,11 @@ public class SalesItem {
         return bp + ","+ quantity + "," + date;
     }
     
+    public String invoiceToString(){
+        return null;
+    }
     
+    public double totalCost(){
+        return bp.getPrice()*quantity;
+    }
 }

@@ -6,7 +6,9 @@
 package projtwo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -16,11 +18,13 @@ public class OfficeManager extends User{
     private ArrayList<Invoice> iList;
     private File file = new File("iList");
     private int min=5;
-    private Fleet fleet= new Fleet(); //singlton get instance
+    Fleet fleet;
     
 
-    public OfficeManager(String f, String l, String e, String u, String p) {
+    public OfficeManager(String f, String l, String e, String u, String p) throws FileNotFoundException {
         super(f, l, e, u, p);
+        fleet= new Fleet(); //singlton get instance
+
     }
     public void fillInvoices(){
         //fill ilist by reading the contents of file and getting the invoice
@@ -30,15 +34,15 @@ public class OfficeManager extends User{
         iList.add(i);
     }
     public BikePart displayByName(String pn){
-       
-        for(WareHouse wh: fleet){
+        ArrayList<WareHouse> x=new ArrayList(fleet.getFleet());
+        for(WareHouse wh: x){
             return wh.findPartName(pn);
         }
         return null;
     }
-     public BikePart displayByName(int pn){
-       
-        for(WareHouse wh: fleet){
+     public BikePart displayByNum(int pn){
+        ArrayList<WareHouse> x=new ArrayList(fleet.getFleet());
+        for(WareHouse wh: x){
             return wh.findPartNum(pn);
         }
         return null;
@@ -52,14 +56,17 @@ public class OfficeManager extends User{
     public WareHouse findLow(){return null;
         //return the warehouse that needs more stuff.
     }
-    public String generateCommission(String name,String date1, String date2){
+    public String generateCommission(String name,Date date1, Date date2){
         //date stuff
         for (Invoice i:iList){
             if (i.getSA().equals(name)){
-                i.toString();
+                return i.toString(date1,date2);
             }
+     
         }
+        return null;
     }
+    
 
     
 }
