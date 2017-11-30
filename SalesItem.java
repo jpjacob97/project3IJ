@@ -41,7 +41,8 @@ public class SalesItem {
     }
     
     public String invoiceToString(){
-        return null;
+        String timesnewroman = String.format("|%-25s|", bp.getName())+String.format("|10d|", bp.getNum())+String.format("|8f|", bp.getListPrice())+String.format("|15f|", bp.getPrice())+String.format("|5f|", quantity)+String.format("|10f|", totalCost())+"\n";
+        return timesnewroman;        
     }
     
     public double totalCost(){
