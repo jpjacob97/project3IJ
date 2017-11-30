@@ -1,8 +1,9 @@
-package projtwo.fxml;
+package fxml;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -31,6 +32,12 @@ public class OfficeManagerController {
 
     @FXML
     private TextArea output;
+
+    @FXML
+    private DatePicker startDate;
+
+    @FXML
+    private DatePicker endDate;
 
     @FXML
     void handleCheckMin(ActionEvent event) {
