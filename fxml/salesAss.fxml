@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" fx:id="partNameSell" prefHeight="632.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="projtwo.fxml.SalesAssController">
+<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.fxml.SalesAssController">
    <children>
       <Text layoutX="252.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Associate" />
       <Button fx:id="vanExchangeButton" layoutX="96.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleVanExchange" text="Van Exchange" />
@@ -20,7 +19,7 @@
       <Button fx:id="sortName" layoutX="258.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleSortName" text="Sort Name" />
       <Button fx:id="sortNum" layoutX="251.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleSortNum" text="Sort Number" />
       <Button fx:id="sellButton" layoutX="160.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleSell" text="Sell" />
-      <TextField layoutX="216.0" layoutY="290.0" />
+      <TextField fx:id="partNameSell" layoutX="216.0" layoutY="290.0" />
       <TextField fx:id="quantity" layoutX="216.0" layoutY="317.0" />
       <Text layoutX="390.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Name" />
       <Text layoutX="390.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" />

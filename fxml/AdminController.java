@@ -72,8 +72,9 @@ public class AdminController {
     }
 
     @FXML
-    void handleCreateUserButton(ActionEvent event) {
-        
+    void handleCreateUserButton(ActionEvent event) throws FileNotFoundException {
+         Employee employed= new Employee();
+         
 
     }
 
