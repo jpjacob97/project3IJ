@@ -27,7 +27,7 @@ public class Employee {
     }
     public void addUser(User u) throws FileNotFoundException{
         users.add(u);
-        write(u.toString());
+        write();
     }
     public ArrayList<User> getList(){
         return users;

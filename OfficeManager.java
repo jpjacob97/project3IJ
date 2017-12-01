@@ -20,7 +20,8 @@ public class OfficeManager extends User{
     private int min=5;
     Fleet fleet;
     
-
+    
+    
     public OfficeManager(String f, String l, String e, String u, String p) throws FileNotFoundException {
         super(f, l, e, u, p);
         fleet= new Fleet(); //singlton get instance

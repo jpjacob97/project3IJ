@@ -30,7 +30,7 @@ public class Admin extends User {
         
     }
     public void changeUserPass(User u, String p){
-        employed.findUser(u).changePass(p);
+        employed.findUser(u.getName()).changePass(p);
     }
     
 }

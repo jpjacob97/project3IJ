@@ -30,9 +30,19 @@ public class SalesAss extends User{
     
     public SalesAss(String f, String l, String e, String u, String p) throws FileNotFoundException{
         super(f,l,e,u,p);
-        fillWH(saWH.getName());
-        
+        fillWH(u);
+        sold = new Invoice(u);
     }
+    
+    public SalesAss(User u) throws FileNotFoundException{
+        super(u.getFirstName(),u.getLastName(),u.getEmail(),u.getUserName(),u.getPass());
+        fillWH(saWH.getName());
+    }
+    
+    
+    
+    
+    
     public void loadWH(String fileName){
         
     }
@@ -41,17 +51,42 @@ public class SalesAss extends User{
         saWH=new WareHouse(WHName);
         //call this every time you open a warehouse manager window
     }
-    public void vanSwap(String fileName){
-        fleet.swap(fileName);
-    }
+//    public void vanSwap(String fileName){
+//        fleet.swap(fileName);
+//    }
     public String genInvoice(Date d1,Date d2){
         return sold.toString(d1,d2);
     }
-    public BikePart Sell(int num, int quan){
-        for(int i=0;i<quan;i++ ){
-            saWH.findPartNum(num).setQuantity(saWH.findPartNum(num).getQuantity()-1);
+    
+    /**
+     * sells a part from this wareHouse.
+     * @param name
+     * @return the part sold.
+     */
+    public BikePart sell(String pn, int quan) throws FileNotFoundException, UnsupportedEncodingException{
+        for(BikePart bp:saWH.getList()){
+            if(bp.getName().equals(pn)){
+                bp.setQuantity(bp.getQuantity() -quan);
+                saWH.updateFile();
+                //make a new sales item
+                Date now = new Date();
+                SalesItem newItem = new SalesItem(bp,quan,now);
+                sold.add(newItem);
+                sold.writeIFile();
+                
+                return bp;
+            }
             
         }
-        return saWH.findPartNum(num);
+        return null;
+    }
+    
+    public SalesItem findSItem(String sname){
+        for(SalesItem s:sold.getSList()){
+            if(s.getBp().getName().equals(sname)){
+                return s;
+            }
+        }
+        return null;
     }
 }

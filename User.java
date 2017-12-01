@@ -44,6 +44,10 @@ public class User {
     public String getEmail() {
         return email;
     }
+    
+    public String getPass() {
+        return pass;
+    }
 
     public boolean checkPass(String check) {
         return check.equals(pass);

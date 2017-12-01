@@ -34,72 +34,63 @@ public class Fleet {
            }
            return null;
        }
-       public ArrayList getFleet(){
+       public ArrayList<WareHouse> getFleet(){
            return fleet;
        }
        public void addWH(WareHouse wh){
            fleet.add(wh);
        }
-       public void swap(String fileName){
-        try {
-            File file = new File(fileName);
-            Scanner fileRead=new Scanner(file);
-            String whs=fileRead.nextLine();
-            List<String> whl = Arrays.asList(whs.split(","));
-            System.out.println(whl);
-            String loser=whl.get(0);
-            String gainer=whl.get(1);
-            WareHouse l=new WareHouse(loser);
-            WareHouse g=new WareHouse(gainer);
-            ArrayList<BikePart> lose=new ArrayList<>(l.getList());
-            ArrayList<BikePart> gain=new ArrayList<>(g.getList());
-            while (fileRead.hasNextLine()){
-                boolean found=false;
-                String namePart=fileRead.nextLine();
-                List<String> nameNum = Arrays.asList(namePart.split(","));
-                String partName=nameNum.get(0);
-                Integer num= Integer.parseInt(nameNum.get(1));
-                for(BikePart bp:gain){
-                    if (partName.equals(bp.getName())){
-                        bp.setQuantity(bp.getQuantity()+num);
-                        found=true;
-                    }
+      public void swap(String fileName){
+          Scanner read =new Scanner(fileName);
+        
+          while (read.hasNextLine()){
+              String line=read.nextLine();
+             
+              String firstline[] =line.split(",");
+              
+              WareHouse fromWH= findwh(firstline[0]);
+              WareHouse toWH= findwh(firstline[1]);
+              while(read.hasNextLine()){
+                String l=read.nextLine();
+                String whArray[] =line.split(",");
+                String bpName=whArray[0];
+                int quan=Integer.parseInt(whArray[1]);
 
+                
+                
+                if(toWH.hasPart(fromWH.findPartName(bpName))){
+                    toWH.findPartName(bpName).setQuantity(toWH.findPartName(bpName).getQuantity()+quan);
                     
                 }
-                for(BikePart bp:lose){
+                else{
+                    BikePart bp1 = fromWH.findPartName(bpName);
                     
-                    if (partName.equals(bp.getName())){
-                        bp.setQuantity(bp.getQuantity()-num);
-
-                    }
-                    if (found==false && (partName.equals(bp.getName()))){
-                        BikePart x= new BikePart(bp.getName(),bp.getNum(),bp.getListPrice(), bp.getSalePrice(),bp.isOnSale(),num);
-                        gain.add(x);
-                        found=true;
-                    }
-
+                    
+                    bp1.setQuantity(bp1.getQuantity()+quan);
+                    toWH.addPart(bp1);
                     
                 }
-
-            }
-            l.setList(lose);
-            g.setList(gain);
-            l.updateFile();
-            g.updateFile();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+                
+                
+                fromWH.findPartName(bpName).setQuantity(fromWH.findPartName(bpName).getQuantity()-quan);
+              }
+              fromWH.updateFile();
+              toWH.updateFile();
+              
+              
+              
+          }
+      }
     public void readFFile() throws FileNotFoundException{
             Scanner read = new Scanner(file);
+
             while (read.hasNextLine()) {
                 String line = read.nextLine();
                 WareHouse wh=new WareHouse(line);
                 fleet.add(wh);
             }    
     }
+
     public void update() throws FileNotFoundException{
         try {
             PrintWriter writer = new PrintWriter("fleet.txt", "UTF-8");

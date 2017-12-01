@@ -23,11 +23,22 @@ public class Invoice {
 
     private ArrayList<SalesItem> sList;
     private String saName;
-    File file = new File("iFile" + saName + ".txt");
+    File file = new File("iFile" + saName);
     private String filename = "iFile" + saName + ".txt";
+    
+    
+    public Invoice(String saName) throws FileNotFoundException{
+        this.saName=saName;
+        readIFile();
+        
+    }
 
     public String getSA() {
         return saName;
+    }
+    
+    public ArrayList<SalesItem> getSList(){
+        return sList;
     }
 
     public String toString(Date d1, Date d2) {

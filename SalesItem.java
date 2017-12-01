@@ -34,6 +34,10 @@ public class SalesItem {
     public BikePart getBp() {
         return bp;
     }
+    
+    public String sellToString(){
+        return "Sold Item = "+bp.toString()+"\n"+"Quantity Sold: "+quantity+"\n"+"Total Price= $"+totalCost();
+    }
 
     @Override
     public String toString() {

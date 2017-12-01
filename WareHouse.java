@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,23 +75,6 @@ public class WareHouse {
         return wareHouseName;
     }
     
-    /**
-     * sells a part from this wareHouse.
-     * @param name
-     * @return the part sold.
-     */
-    public BikePart sell(int num){
-        BikePart x= new BikePart("this",10,10,10,true,10);
-        for(BikePart bp:bps){
-            if(num==bp.getNum()){
-                bp.setQuantity(bp.getQuantity() -1);
-                updateFile();
-                return bp;
-            }
-            
-        }
-        return x;
-    }
     
     /**
      * gets the list of parts currently in the file.
@@ -151,6 +135,42 @@ public class WareHouse {
         Collections.sort(bps);
     }
     
+    public boolean hasPart(BikePart bp){
+        if (bps.contains(bp))
+            return true;
+        
+        return false;
+    }  
+    
+    
+    public boolean hasPart(String bpname){
+        for(BikePart bp: bps){
+            if(bp.getName().equals(bpname)){
+                return true;
+            }
+        }
+        
+        return false;
+    } 
+                    
+        public boolean hasPart(int bpname){
+        for(BikePart bp: bps){
+            if(bp.getNum()==(bpname)){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+        
+    public String printWH(){
+        String out = "WareHouse Name: "+ wareHouseName+"\n";
+        for(BikePart bp: bps){
+            out+= bp.toString()+"\n";
+        }
+        return out;
+    }
+                    
 }
 
     
