@@ -1,9 +1,12 @@
 package projtwo;
 
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -36,22 +39,19 @@ public class AdminController {
     private TextField lastNameField;
 
     @FXML
-    private RadioButton AdminRadio;
-
-    @FXML
-    private ToggleGroup radiobuttons;
-
-    @FXML
-    private RadioButton oManRadio;
-
-    @FXML
-    private RadioButton WHManRadio;
-
-    @FXML
-    private RadioButton salesAssRadio;
-
-    @FXML
     private TextField delUserField;
+    
+    @FXML
+    private CheckBox OfficeManagerCheck;
+
+    @FXML
+    private CheckBox WHManagerCheck;
+
+    @FXML
+    private CheckBox SalesAssociateCheck;
+
+    @FXML
+    private CheckBox AdminCheck;
 
     @FXML
     private TextField chanUser;
@@ -72,9 +72,32 @@ public class AdminController {
     }
 
     @FXML
-    void handleCreateUserButton(ActionEvent event) throws FileNotFoundException {
+    void handleCreateUserButton(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
          Employee employed= new Employee();
-         
+         if(WHManagerCheck.isSelected()){
+             User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"WHManager");    
+             employed.addUser(uh);
+             Fleet f = new Fleet();
+             WareHouse wh=new WareHouse(userNameField.getText()+".txt");
+             f.addWH(wh);
+             output.appendText("WHMan Created: "+uh.toString()+"\n");
+         }
+         if(OfficeManagerCheck.isSelected()){
+            User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"OfficeManager");    
+             employed.addUser(uh);
+             output.appendText("OfficeManager Created: "+uh.toString()+"\n");             
+         }
+         if(AdminCheck.isSelected()){
+            User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"Admin");    
+             employed.addUser(uh);
+             output.appendText("Admin Created: "+uh.toString()+"\n");             
+         }
+         if(SalesAssociateCheck.isSelected()){
+            User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"SalesAss");    
+             employed.addUser(uh);
+             output.appendText("WHMan Created: "+uh.toString()+"\n");             
+         }
+
 
     }
 

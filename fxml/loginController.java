@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import projtwo.Admin;
 import projtwo.Employee;
@@ -20,6 +22,9 @@ import projtwo.WHManager;
 
 public class loginController {
     public static String usernametext;
+    
+    @FXML
+    private ImageView boat;
 
     @FXML
     private TextField password;
@@ -29,6 +34,7 @@ public class loginController {
 
     @FXML
     private Button login;
+    
 
     @FXML
     void handleLoginButton(ActionEvent event) throws FileNotFoundException, IOException {
@@ -40,7 +46,7 @@ public class loginController {
         
 
         if(logged.getUserName().equalsIgnoreCase(userName.getText())&&logged.checkPass(password.getText())){
-            if(employed.findUser(userName.getText()) instanceof Admin ){
+            if(employed.findUser(userName.getText()).getType().equals ("Admin") ){
                 usernametext=userName.getText();
                 Parent homePageParent= FXMLLoader.load(getClass().getResource("Admin.fxml"));
                 Scene homePageScene = new Scene(homePageParent);
@@ -50,7 +56,7 @@ public class loginController {
                 
             }
             
-            if(employed.findUser(userName.getText()) instanceof OfficeManager ){
+            if(employed.findUser(userName.getText()).getType().equals( "OfficeManager") ){
                 usernametext=userName.getText();
                 Parent homePageParent= FXMLLoader.load(getClass().getResource("OfficeManager.fxml"));
                 Scene homePageScene = new Scene(homePageParent);
@@ -59,16 +65,16 @@ public class loginController {
                 projectStage.show();                
                 
             }
-            if(employed.findUser(userName.getText()) instanceof WHManager ){
+            if(employed.findUser(userName.getText()).getType().equals( "WHManager") ){
                 usernametext=userName.getText();
-                Parent homePageParent= FXMLLoader.load(getClass().getResource("WareHouseManagerController.fxml"));
+                Parent homePageParent= FXMLLoader.load(getClass().getResource("WareHouseManager.fxml"));
                 Scene homePageScene = new Scene(homePageParent);
                 Stage projectStage=(Stage) ((Node) event.getSource()).getScene().getWindow();
                 projectStage.setScene(homePageScene);
                 projectStage.show();                
                 
             }
-            if(employed.findUser(userName.getText()) instanceof SalesAss ){
+            if(employed.findUser(userName.getText()).getType().equals( "SalesAss")){
                 usernametext=userName.getText();
                 Parent homePageParent= FXMLLoader.load(getClass().getResource("salesAss.fxml"));
                 Scene homePageScene = new Scene(homePageParent);

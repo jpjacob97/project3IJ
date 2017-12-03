@@ -26,5 +26,7 @@
       <TextArea fx:id="output" layoutX="36.0" layoutY="409.0" prefHeight="200.0" prefWidth="533.0" />
       <TextField fx:id="fileName" layoutX="216.0" layoutY="365.0" />
       <Text layoutX="392.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Name" />
+      <TextField fx:id="whuName" layoutX="216.0" layoutY="60.0" />
+      <Text layoutX="177.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your WareHouse Manager's Employee ID" />
    </children>
 </AnchorPane>

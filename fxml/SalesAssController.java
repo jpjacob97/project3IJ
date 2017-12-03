@@ -13,6 +13,7 @@ import projtwo.Employee;
 import projtwo.Fleet;
 import projtwo.SalesAss;
 import projtwo.SalesItem;
+import projtwo.WHManager;
 import projtwo.WareHouse;
 import static projtwo.fxml.loginController.usernametext;
 
@@ -53,33 +54,26 @@ public class SalesAssController {
 
     @FXML
     private TextField fileName;
-
+    
     @FXML
-    void HandleDisplayByName(ActionEvent event) throws FileNotFoundException {
-        Fleet fleet = new Fleet();
-        ArrayList<WareHouse> fleetlist = fleet.getFleet();
-        for(WareHouse wh: fleetlist){
-            if(wh.hasPart(partName.getText())&&wh.getName().equals(usernametext)){
-                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(partName.getText()).toString());
-            }
-        }
+    private TextField whuName;
+
+    
+    @FXML
+    void handleDisplayByNum(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
+        WHManager whm = new WHManager("s","s","s",whuName.getText()+".txt", "s","s");
+        output.appendText(whm.displayByNum(Integer.parseInt(partNum.getText())).toString()+"\n");
     }
 
     @FXML
-    void handleDisplayByNum(ActionEvent event) throws FileNotFoundException {
-        Fleet fleet = new Fleet();
-        ArrayList<WareHouse> fleetlist = fleet.getFleet();
-        for(WareHouse wh: fleetlist){
-            if(wh.hasPart(Integer.parseInt(partNum.getText()))&&wh.getName().equals(usernametext)){
-                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(partNum.getText()).toString());
-            }
-        }
+    void HandleDisplayByName(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
+          WHManager whm = new WHManager("s","s","s",whuName.getText()+".txt", "s","s");
+          output.appendText(whm.displayByName(partName.getText()).toString()+"\n");
     }
 
     @FXML
     void handleSell(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
-        Employee employed = new Employee();
-        SalesAss sa = new SalesAss(employed.findUser(usernametext));
+        SalesAss sa = new SalesAss("f","s","e",whuName.getText()+".txt","s","s");
         sa.sell(partNameSell.getText(),Integer.parseInt(quantity.getText()));
         SalesItem safound = sa.findSItem(partNameSell.getText());
         output.appendText(safound.sellToString());
@@ -87,19 +81,15 @@ public class SalesAssController {
     }
 
     @FXML
-    void handleSortName(ActionEvent event) throws FileNotFoundException {
-        Fleet fleet = new Fleet();
-        ArrayList<WareHouse> fleetlist = fleet.getFleet();
-        for(WareHouse wh: fleetlist){
-            if(wh.getName().equals(usernametext)){
-                wh.sortByName();
-                output.appendText(wh.printWH());
-            }
-        }
+    void handleSortName(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
+         SalesAss sa = new SalesAss("f","s","e",whuName.getText()+".txt","s","s");
+         sa.getWH().sortByName();
+         output.appendText(sa.getWH().printWH());
+        
     }
 
     @FXML
-    void handleSortNum(ActionEvent event) throws FileNotFoundException {
+    void handleSortNum(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         Fleet fleet = new Fleet();
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
@@ -111,7 +101,7 @@ public class SalesAssController {
     }
 
     @FXML
-    void handleVanExchange(ActionEvent event) throws FileNotFoundException {
+    void handleVanExchange(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         Fleet fleet = new Fleet();
         fleet.swap(fileName.getText());
         output.appendText("Successful Swap Matey");

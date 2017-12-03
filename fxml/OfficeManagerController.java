@@ -1,6 +1,7 @@
 package fxml;
 
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,7 +51,7 @@ public class OfficeManagerController {
     private DatePicker endDate;
 
     @FXML
-    void handleCheckMin(ActionEvent event) throws FileNotFoundException {
+    void handleCheckMin(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         int min=5;
         Fleet fleet=new Fleet();
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
@@ -66,7 +67,7 @@ public class OfficeManagerController {
     }
 
     @FXML
-    void handleDisplayByName(ActionEvent event) throws FileNotFoundException {
+    void handleDisplayByName(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         Fleet fleet = new Fleet();
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
@@ -78,7 +79,7 @@ public class OfficeManagerController {
     }
 
     @FXML
-    void handleDisplayByNum(ActionEvent event) throws FileNotFoundException {
+    void handleDisplayByNum(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         Fleet fleet = new Fleet();
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
@@ -89,7 +90,7 @@ public class OfficeManagerController {
     }
 
     @FXML
-    void handleGenCommission(ActionEvent event) throws FileNotFoundException {
+    void handleGenCommission(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         //creates localdate object to then be converted to date
         LocalDate dh1=startDate.getValue();
         Date date1= java.sql.Date.valueOf(dh1);
@@ -98,7 +99,7 @@ public class OfficeManagerController {
         Date date2= java.sql.Date.valueOf(dh2);
         
         
-        OfficeManager om = new OfficeManager("f","l","n","a","a");
+        OfficeManager om = new OfficeManager("f","l","n","a","a","i");
         output.appendText(om.generateCommission(genComField.getText(), date1, date2));
         
         
