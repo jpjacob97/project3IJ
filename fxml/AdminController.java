@@ -80,6 +80,7 @@ public class AdminController {
              Fleet f = new Fleet();
              WareHouse wh=new WareHouse(userNameField.getText()+".txt");
              f.addWH(wh);
+             wh.writeToFleet();
              output.appendText("WHMan Created: "+uh.toString()+"\n");
          }
          if(OfficeManagerCheck.isSelected()){

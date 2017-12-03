@@ -90,14 +90,9 @@ public class SalesAssController {
 
     @FXML
     void handleSortNum(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
-        Fleet fleet = new Fleet();
-        ArrayList<WareHouse> fleetlist = fleet.getFleet();
-        for(WareHouse wh: fleetlist){
-            if(wh.getName().equals(usernametext)){
-                wh.sortByNum();
-                output.appendText(wh.printWH());
-            }
-        }
+        SalesAss sa = new SalesAss("f","s","e",whuName.getText()+".txt","s","s");
+        sa.getWH().sortByNum();
+        output.appendText(sa.getWH().printWH());
     }
 
     @FXML
