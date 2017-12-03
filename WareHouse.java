@@ -32,14 +32,25 @@ public class WareHouse {
      * @param name
      * @throws FileNotFoundException 
      */
-    public WareHouse(String name) throws FileNotFoundException{
+    public WareHouse(String name) throws FileNotFoundException, UnsupportedEncodingException{
+
         //create file object
         file= new File(name);
         wareHouseName=name;
+        System.out.println(wareHouseName);
+        
+        //create file if not there
+        if(!file.exists()){
+           PrintWriter writer= new PrintWriter(name,"UTF-8");
+
+        }
+        writeToFleet();
         //get the arraylist of parts from the existing file
-        ArrayList<BikePart> p=new ArrayList<BikePart>(readFile(name));
+        ArrayList<BikePart> p=readFile(name);
+        System.out.println("stuff");
         //set the arraylist
         bps=p;
+        System.out.println(bps);
         
     }
     
@@ -107,28 +118,25 @@ public class WareHouse {
         return null;
     }
     public String read(String fileName){
-    String out="";
-    System.out.print("Enter the name of the file you would like to read:");
-    ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName+".txt"));
-    ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
-    if(bps.isEmpty()){
-        Writer.writeFile("warehouseDB.txt", parts);
-        return("successfully created");
-    }
-    else{
-        Writer.updateFile("warehouseDB.txt", parts);
-        return("successfully updated");
-    }
+        String out="";
+        System.out.print("Enter the name of the file you would like to read:");
+        ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName));
+        ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
+        System.out.println(parts);
+        System.out.println(bps);
+        if(bps.isEmpty()){
+            Writer.writeFile(wareHouseName, parts);
+            return("successfully created");
+        }
+        else{
+            Writer.updateFile(wareHouseName, parts);
+            return("successfully updated");
+        }
 
     }
     
     public void sortByName(){
-        Collections.sort(bps, new Comparator<BikePart>(){
-                @Override
-                public int compare(BikePart bp1, BikePart bp2) {
-                    return bp1.getName().compareToIgnoreCase(bp2.getName());
-                }
-                });
+        Collections.sort(bps, (BikePart bp1, BikePart bp2) -> bp1.getName().compareToIgnoreCase(bp2.getName()));
     }
     
     public void sortByNum(){
@@ -169,6 +177,10 @@ public class WareHouse {
             out+= bp.toString()+"\n";
         }
         return out;
+    }
+    public void writeToFleet() throws FileNotFoundException, UnsupportedEncodingException{
+        PrintWriter p= new PrintWriter("fleet.txt","UTF-8");
+        p.println(wareHouseName);
     }
                     
 }

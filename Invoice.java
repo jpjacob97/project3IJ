@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import static projtwo.fxml.loginController.usernametext;
 
 /**
  *
@@ -21,16 +22,22 @@ import java.util.Scanner;
  */
 public class Invoice {
 
-    private ArrayList<SalesItem> sList;
+    private ArrayList<SalesItem> sList= new ArrayList();
     private String saName;
-    File file = new File("iFile" + saName);
-    private String filename = "iFile" + saName + ".txt";
+
+    private String filename = "iFile" + usernametext + ".txt";
+    File file = new File(filename);
     
     
-    public Invoice(String saName) throws FileNotFoundException{
+    public Invoice(String saName) throws FileNotFoundException, UnsupportedEncodingException{
         this.saName=saName;
+
+                        //create file if not there
+        if(!file.exists()){
+           PrintWriter writer= new PrintWriter(filename,"UTF-8");
+
+        }
         readIFile();
-        
     }
 
     public String getSA() {
@@ -76,7 +83,7 @@ public class Invoice {
             String[] pv = line.split(",");
             String regExp = "\\s*(\\s|,)\\s*";
             String[] pv1 = line.split(regExp);
-            Date dt = stringToDate(pv[2]);
+            Date dt = stringToDate(pv[7]);
             BikePart bp = new BikePart(pv1[0], Integer.parseInt(pv1[1]), Double.parseDouble(pv1[2]), Double.parseDouble(pv1[3]), pv1[4].equals("true"), Integer.parseInt(pv1[5]));
             SalesItem si = new SalesItem(bp, Integer.parseInt(pv[1]), dt);
             retList.add(si);
@@ -94,7 +101,7 @@ public class Invoice {
     public Date stringToDate(String s) {
         Date result = null;
         try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("EE MMM dd hh:mm:ss z yyyy");
             result = dateFormat.parse(s);
         } catch (ParseException e) {
             e.printStackTrace();

@@ -24,7 +24,7 @@ public class Writer {
             writer.close();
             
             // Success message
-            System.out.println(fileName+" successfully created!");            
+            System.out.println(fileName+" successfully created!***********");            
         } 
         
         // Catch the file not found exception

@@ -21,9 +21,9 @@ import java.util.logging.Logger;
  * @author jacobpetersen
  */
 public class Fleet {
-       private ArrayList<WareHouse> fleet;
+       private ArrayList<WareHouse> fleet =new ArrayList();
        private File file=new File("fleet.txt");
-       public Fleet() throws FileNotFoundException{
+       public Fleet() throws FileNotFoundException, UnsupportedEncodingException{
            readFFile();
        }
        public WareHouse findwh(String n){
@@ -81,7 +81,7 @@ public class Fleet {
               
           }
       }
-    public void readFFile() throws FileNotFoundException{
+    public void readFFile() throws FileNotFoundException, UnsupportedEncodingException{
             Scanner read = new Scanner(file);
 
             while (read.hasNextLine()) {

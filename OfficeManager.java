@@ -7,6 +7,7 @@ package projtwo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,8 +23,8 @@ public class OfficeManager extends User{
     
     
     
-    public OfficeManager(String f, String l, String e, String u, String p) throws FileNotFoundException {
-        super(f, l, e, u, p);
+    public OfficeManager(String f, String l, String e, String u, String p,String t) throws FileNotFoundException, UnsupportedEncodingException {
+        super(f, l, e, u, p,t);
         fleet= new Fleet(); //singlton get instance
 
     }

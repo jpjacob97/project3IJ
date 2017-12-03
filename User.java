@@ -16,13 +16,15 @@ public class User {
     private String email; //email
     private final String uName; //user name
     private String pass; //password
+    private String type;
 
-    public User(String f, String l, String e, String u, String p) {
+    public User(String f, String l, String e, String u, String p, String t) {
         fName = f;
         lName = l;
         email = e;
         uName = u;
         pass = p;
+        type= t;
     }
 
     public String getUserName() {
@@ -72,6 +74,10 @@ public class User {
     }
     @Override
     public String toString(){
-        return fName+","+lName+","+email+","+uName+","+pass;
+        return fName+","+lName+","+email+","+uName+","+pass+","+type;
+    }
+    
+    public String getType(){
+        return type;
     }
 }

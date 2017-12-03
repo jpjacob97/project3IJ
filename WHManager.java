@@ -6,6 +6,7 @@
 package projtwo;
 
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 /**
  *
@@ -15,11 +16,12 @@ public class WHManager extends User {
     private WareHouse manWH;
     
 
-    public WHManager(String f, String l, String e, String u, String p) {
-        super(f, l, e, u, p);
+    public WHManager(String f, String l, String e, String u, String p, String t) throws FileNotFoundException, UnsupportedEncodingException {
+        super(f, l, e, u, p,t);
+        manWH= new WareHouse(u);
         
     }
-    public void fillWH(String WHName) throws FileNotFoundException{
+    public void fillWH(String WHName) throws FileNotFoundException, UnsupportedEncodingException{
         manWH=new WareHouse(WHName);
         //call this every time you open a warehouse manager window
     }

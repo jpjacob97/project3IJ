@@ -14,14 +14,14 @@ import java.io.FileNotFoundException;
 public class Admin extends User {
     Employee employed= null;
     
-    public Admin(String f, String l, String e, String u, String p) throws FileNotFoundException{
-        super(f,l,e,u,p);
+    public Admin(String f, String l, String e, String u, String p, String t) throws FileNotFoundException{
+        super(f,l,e,u,p,t);
         final Employee employed=new Employee();
 
     }
     
-    public void createUser(String f, String l, String e, String u, String p) throws FileNotFoundException{
-        User newUser=new User( f,  l,  e,  u,  p);
+    public void createUser(String f, String l, String e, String u, String p,String t) throws FileNotFoundException{
+        User newUser=new User( f,  l,  e,  u,  p,t);
         employed.addUser(newUser);
         
     }
