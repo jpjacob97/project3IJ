@@ -40,39 +40,42 @@ public class Fleet {
        public void addWH(WareHouse wh){
            fleet.add(wh);
        }
-      public void swap(String fileName){
-          Scanner read =new Scanner(fileName);
+      public void swap(String fileName) throws FileNotFoundException{
+         File file = new File(fileName);
+          Scanner read =new Scanner(file);
         
           while (read.hasNextLine()){
               String line=read.nextLine();
              
-              String firstline[] =line.split(",");
+              String[] firstline =line.split(",");
               
               WareHouse fromWH= findwh(firstline[0]);
+              System.out.println(line);
+              System.out.println(firstline[0]);
               WareHouse toWH= findwh(firstline[1]);
               while(read.hasNextLine()){
                 String l=read.nextLine();
-                String whArray[] =line.split(",");
+                String whArray[] =l.split(",");
                 String bpName=whArray[0];
                 int quan=Integer.parseInt(whArray[1]);
-
+                System.out.println(quan);
                 
                 
-                if(toWH.hasPart(fromWH.findPartName(bpName))){
+                if(toWH.hasPart(bpName)){
                     toWH.findPartName(bpName).setQuantity(toWH.findPartName(bpName).getQuantity()+quan);
+                                    System.out.println();
                     
                 }
                 else{
-                    BikePart bp1 = fromWH.findPartName(bpName);
-                    
-                    
-                    bp1.setQuantity(bp1.getQuantity()+quan);
+                    BikePart bp1 = new BikePart(fromWH.findPartName(bpName).getName(),fromWH.findPartName(bpName).getNum(),fromWH.findPartName(bpName).getListPrice(),fromWH.findPartName(bpName).getSalePrice(),fromWH.findPartName(bpName).isOnSale(),quan);
+                                    System.out.println("thisq");
                     toWH.addPart(bp1);
                     
                 }
                 
                 
                 fromWH.findPartName(bpName).setQuantity(fromWH.findPartName(bpName).getQuantity()-quan);
+                                System.out.println("eleventyfour");
               }
               fromWH.updateFile();
               toWH.updateFile();

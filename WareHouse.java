@@ -44,7 +44,6 @@ public class WareHouse {
            PrintWriter writer= new PrintWriter(name,"UTF-8");
 
         }
-        writeToFleet();
         //get the arraylist of parts from the existing file
         ArrayList<BikePart> p=readFile(name);
         System.out.println("stuff");
@@ -60,6 +59,7 @@ public class WareHouse {
      */
     public void addPart(BikePart partName){
         bps.add(partName);
+        updateFile();
     }
     
     /**
@@ -181,6 +181,7 @@ public class WareHouse {
     public void writeToFleet() throws FileNotFoundException, UnsupportedEncodingException{
         PrintWriter p= new PrintWriter("fleet.txt","UTF-8");
         p.println(wareHouseName);
+        p.close();
     }
                     
 }

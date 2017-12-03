@@ -85,9 +85,10 @@ public class Invoice {
             String[] pv1 = line.split(regExp);
             Date dt = stringToDate(pv[7]);
             BikePart bp = new BikePart(pv1[0], Integer.parseInt(pv1[1]), Double.parseDouble(pv1[2]), Double.parseDouble(pv1[3]), pv1[4].equals("true"), Integer.parseInt(pv1[5]));
-            SalesItem si = new SalesItem(bp, Integer.parseInt(pv[1]), dt);
+            SalesItem si = new SalesItem(bp, Integer.parseInt(pv[6]), dt);
             retList.add(si);
         }
+        sList=retList;
     }
 
     public void writeIFile() throws FileNotFoundException, UnsupportedEncodingException {
