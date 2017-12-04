@@ -60,7 +60,7 @@ public class SalesAss extends User{
 //    public void vanSwap(String fileName){
 //        fleet.swap(fileName);
 //    }
-    public String genInvoice(Date d1,Date d2){
+    public String genInvoice(Date d1,Date d2) throws FileNotFoundException{
         return sold.toString(d1,d2);
     }
     

@@ -60,12 +60,13 @@ public class Fleet {
                 int quan=Integer.parseInt(whArray[1]);
                 System.out.println(quan);
                 
-                
+                //updates part in toWH
                 if(toWH.hasPart(bpName)){
                     toWH.findPartName(bpName).setQuantity(toWH.findPartName(bpName).getQuantity()+quan);
                                     System.out.println();
                     
                 }
+                //makes part in toWH
                 else{
                     BikePart bp1 = new BikePart(fromWH.findPartName(bpName).getName(),fromWH.findPartName(bpName).getNum(),fromWH.findPartName(bpName).getListPrice(),fromWH.findPartName(bpName).getSalePrice(),fromWH.findPartName(bpName).isOnSale(),quan);
                                     System.out.println("thisq");
@@ -73,8 +74,9 @@ public class Fleet {
                     
                 }
                 
-                
-                fromWH.findPartName(bpName).setQuantity(fromWH.findPartName(bpName).getQuantity()-quan);
+                //sets quantity of fromWH
+                int oldquan = fromWH.findPartName(bpName).getQuantity();
+                fromWH.findPartName(bpName).setQuantity(oldquan-quan);
                                 System.out.println("eleventyfour");
               }
               fromWH.updateFile();

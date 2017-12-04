@@ -45,7 +45,7 @@ public class SalesItem {
     }
     
     public String invoiceToString(){
-        String timesnewroman = String.format("|%-25s|", bp.getName())+String.format("|10d|", bp.getNum())+String.format("|8f|", bp.getListPrice())+String.format("|15f|", bp.getPrice())+String.format("|5f|", quantity)+String.format("|10f|", totalCost())+"\n";
+        String timesnewroman = String.format("|%-15s|", bp.getName())+String.format("%11d|", bp.getNum())+String.format("%8.2f|", bp.getListPrice())+String.format("%15.2f|", bp.getPrice())+String.format("%5d|", quantity)+String.format("%10.2f|", totalCost())+"\n";
         return timesnewroman;        
     }
     

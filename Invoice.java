@@ -25,13 +25,15 @@ public class Invoice {
     private ArrayList<SalesItem> sList= new ArrayList();
     private String saName;
 
-    private String filename = "iFile" + usernametext + ".txt";
-    File file = new File(filename);
+    private String filename="";
+    File file;
     
     
     public Invoice(String saName) throws FileNotFoundException, UnsupportedEncodingException{
         this.saName=saName;
-
+        
+        filename= "iFile" + saName + ".txt";
+        file=  new File(filename);
                         //create file if not there
         if(!file.exists()){
            PrintWriter writer= new PrintWriter(filename,"UTF-8");
@@ -48,26 +50,28 @@ public class Invoice {
         return sList;
     }
 
-    public String toString(Date d1, Date d2) {
-        ArrayList<SalesItem> invoiceList = null;
+    public String toString(Date d1, Date d2) throws FileNotFoundException {
+        readIFile();
+        ArrayList<SalesItem> invoiceList = new ArrayList();
         for (SalesItem s : sList) {
             if (s.getDate().after(d1) && s.getDate().before(d2)) {
                 invoiceList.add(s);
             }
         }
+        System.out.println(sList);
         String out="";
-        String firstLine = "**************************************************************************************\n";
+        String firstLine = "***********************************************************************\n";
         Date now = new Date();
-        String secondLine = "Sales Invoice for: " + saName + now + "\n";
+        String secondLine = "Sales Invoice for: " + saName +"   "+ now + "\n";
         String pn = "Part Name";
-        String thirdLine = String.format("|%-25s|", pn) + String.format("|10s|", "Part Number") + String.format("|8s|", "Price") + String.format("|15s|", "Sales Price") + String.format("|5s|", "Qnty") + String.format("|10s|", "Total Cost") + "\n";
+        String thirdLine = String.format("|%-15s|", pn) + String.format("%10s|", "Part Number") + String.format("%8s|", "Price") + String.format("%15s|", "Sales Price") + String.format("%5s|", "Qnty") + String.format("%10s|", "Total Cost") + "\n";
         out=firstLine+secondLine+thirdLine;
         for(SalesItem si:invoiceList){
             out+=si.invoiceToString();
         }
-        out+= "Total" + String.format("%81f", total(invoiceList));
+        out+= "Total" + String.format("%65.2f", total(invoiceList));
         return out;
-        // the project.
+        // the project.2
     }
 
     public void add(SalesItem s) {
@@ -77,6 +81,7 @@ public class Invoice {
     public void readIFile() throws FileNotFoundException {
         ArrayList<SalesItem> retList = new ArrayList();
         Scanner read = new Scanner(file);
+        System.out.println(file.getName());
         while (read.hasNextLine()) {
             String line = read.nextLine();
 
@@ -87,8 +92,11 @@ public class Invoice {
             BikePart bp = new BikePart(pv1[0], Integer.parseInt(pv1[1]), Double.parseDouble(pv1[2]), Double.parseDouble(pv1[3]), pv1[4].equals("true"), Integer.parseInt(pv1[5]));
             SalesItem si = new SalesItem(bp, Integer.parseInt(pv[6]), dt);
             retList.add(si);
+            System.out.println("RETLIST: "+retList);
         }
-        sList=retList;
+        for(SalesItem si: retList){
+            sList.add(si);
+        }
     }
 
     public void writeIFile() throws FileNotFoundException, UnsupportedEncodingException {
