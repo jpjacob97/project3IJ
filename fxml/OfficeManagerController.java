@@ -72,7 +72,7 @@ public class OfficeManagerController {
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
             if(wh.hasPart(displayByNameField.getText())){
-                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(displayByNameField.getText()).toString());
+                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(displayByNameField.getText()).toString()+"\n");
             }
         }
         
@@ -84,7 +84,7 @@ public class OfficeManagerController {
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
             if(wh.hasPart(displayByNameField.getText())){
-                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(displayByNameField.getText()).toString());
+                output.appendText("WareHouse: "+wh.getName()+"\n BikePart: "+wh.findPartName(displayByNameField.getText()).toString()+"\n");
             }
         }
     }

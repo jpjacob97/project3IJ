@@ -4,10 +4,12 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.AdminController">
+<AnchorPane id="AnchorPane" prefHeight="725.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.AdminController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text layoutX="295.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" />
@@ -37,5 +39,10 @@
       <CheckBox fx:id="WHManagerCheck" layoutX="459.0" layoutY="108.0" mnemonicParsing="false" text="WHManager" />
       <CheckBox fx:id="SalesAssociateCheck" layoutX="459.0" layoutY="135.0" mnemonicParsing="false" text="SalesAssociate" />
       <CheckBox fx:id="AdminCheck" layoutX="459.0" layoutY="162.0" mnemonicParsing="false" text="Admin" />
+      <ImageView fitHeight="115.0" fitWidth="179.0" layoutX="401.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ship.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

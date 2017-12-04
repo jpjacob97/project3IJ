@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.fxml.loginController">
+<AnchorPane id="AnchorPane" prefHeight="756.0" prefWidth="750.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.fxml.loginController">
     <children>
       <Accordion layoutY="203.0" />
       <TextField fx:id="password" layoutX="292.0" layoutY="391.0" />
@@ -19,7 +19,12 @@
       <Button fx:id="login" layoutX="346.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleLoginButton" text="Login" />
       <ImageView fx:id="boat" fitHeight="255.0" fitWidth="459.0" layoutX="188.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../boat-2024402_960_720.png" />
+            <Image url="@boat-2024402_960_720.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="347.0" fitWidth="394.0" layoutX="179.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bikegif.gif" />
          </image>
       </ImageView>
     </children>

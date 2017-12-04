@@ -76,7 +76,7 @@ public class SalesAssController {
         SalesAss sa = new SalesAss("f","s","e",whuName.getText()+".txt","s","s");
         sa.sell(partNameSell.getText(),Integer.parseInt(quantity.getText()));
         SalesItem safound = sa.findSItem(partNameSell.getText());
-        output.appendText(safound.sellToString());
+        output.appendText(safound.sellToString()+"\n");
         
     }
 
@@ -99,7 +99,7 @@ public class SalesAssController {
     void handleVanExchange(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         Fleet fleet = new Fleet();
         fleet.swap(fileName.getText());
-        output.appendText("Successful Swap Matey");
+        output.appendText("Successful Swap Matey! \n");
     }
 
 }

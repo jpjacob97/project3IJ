@@ -3,22 +3,28 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="projtwo.fxml.WareHouseManagerController">
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projtwo.fxml.WareHouseManagerController">
    <children>
       <Text layoutX="231.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warehouse MANAGER" />
-      <TextField fx:id="filename" layoutX="289.0" layoutY="54.0" />
-      <Button fx:id="updateWareHouseButton" layoutX="152.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleUpdateWareHouse" text="Update WareHouse" />
-      <Button fx:id="displayByName" layoutX="170.0" layoutY="96.0" mnemonicParsing="false" onAction="#HandleDisplayByName" text="Display By Name" />
-      <Button fx:id="displayByNum" layoutX="128.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleDisplayByNum" text="Display By Part Number" />
+      <TextField fx:id="filename" layoutX="197.0" layoutY="54.0" />
+      <Button fx:id="updateWareHouseButton" layoutX="33.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleUpdateWareHouse" prefHeight="27.0" prefWidth="164.0" text="Update WareHouse" />
+      <Button fx:id="displayByName" layoutX="33.0" layoutY="96.0" mnemonicParsing="false" onAction="#HandleDisplayByName" prefHeight="27.0" prefWidth="164.0" text="Display By Name" />
+      <Button fx:id="displayByNum" layoutX="33.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleDisplayByNum" text="Display By Part Number" />
       <TextArea fx:id="output" layoutX="33.0" layoutY="177.0" prefHeight="200.0" prefWidth="533.0" />
-      <Text layoutX="469.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FileName" />
-      <TextField fx:id="partName" layoutX="289.0" layoutY="96.0" />
-      <TextField fx:id="partNum" layoutX="289.0" layoutY="143.0" />
-      <Text layoutX="465.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Name" />
-      <Text layoutX="458.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Number" />
+      <Text layoutX="364.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FileName" />
+      <TextField fx:id="partName" layoutX="197.0" layoutY="96.0" />
+      <TextField fx:id="partNum" layoutX="197.0" layoutY="143.0" />
+      <Text layoutX="364.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Name" />
+      <Text layoutX="364.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part Number" />
+      <ImageView fitHeight="114.0" fitWidth="154.0" layoutX="428.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@boat-2024402_960_720.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
