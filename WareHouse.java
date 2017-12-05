@@ -19,7 +19,7 @@ import projtwo.Writer;
 
 
 /**
- *This class creates and manages warehouses.
+ * This class creates and manages warehouses.
  * @author jacobpetersen
  */
 public class WareHouse {
@@ -28,7 +28,7 @@ public class WareHouse {
     private File file;
     
     /**
-     * creates a warehouse object.
+     * Creates a warehouse object.
      * @param name
      * @throws FileNotFoundException 
      */
@@ -54,7 +54,7 @@ public class WareHouse {
     }
     
     /**
-     * adds a part to the arrayList.
+     * Adds a part to the arrayList.
      * @param partName 
      */
     public void addPart(BikePart partName){
@@ -63,7 +63,7 @@ public class WareHouse {
     }
     
     /**
-     * sets the name of the wareHouse.
+     * Sets the name of the wareHouse.
      * @param n 
      */
     public void setName(String n){
@@ -71,7 +71,7 @@ public class WareHouse {
     }
     
     /**
-     * sets the arrayList to the list passed.
+     * Sets the arrayList to the list passed.
      * @param bps 
      */
     public void setList(ArrayList<BikePart> bps){
@@ -79,7 +79,7 @@ public class WareHouse {
     }
     
     /**
-     * gets the name of the wareHouse.
+     * Gets the name of the wareHouse.
      * @return the name
      */
     public String getName(){
@@ -88,7 +88,7 @@ public class WareHouse {
     
     
     /**
-     * gets the list of parts currently in the file.
+     * Gets the list of parts currently in the file.
      * @return  the arrayList of bike parts in the file
      */
     public ArrayList<BikePart> getList(){
@@ -96,12 +96,18 @@ public class WareHouse {
     }
     
     /**
-     * updates the file to match the current arrayList.
+     * Updates the file to match the current arrayList.
      */
     public void updateFile(){
         
         Writer.writeFile(wareHouseName,bps);
     }
+    
+    /**
+     * Returns the part that matches the name passed.
+     * @param s name of the part you are looking for.
+     * @return BikePart
+     */
     public BikePart findPartName(String s){
         for(BikePart bp: bps){
             if(bp.getName().equals(s))
@@ -110,6 +116,11 @@ public class WareHouse {
         return null;
     }
     
+    /**
+     * Returns the part that matches the number passed.
+     * @param n number of the part you are looking for.
+     * @return BikePart that matches number.
+     */
     public BikePart findPartNum(int n){
         for(BikePart bp: bps){
             if(bp.getNum()==n)
@@ -117,9 +128,14 @@ public class WareHouse {
         }
         return null;
     }
+    
+    /**
+     * Performs the reading function for an inventory file.
+     * @param fileName name of an inventory file
+     * @return String success message.
+     */
     public String read(String fileName){
         String out="";
-        System.out.print("Enter the name of the file you would like to read:");
         ArrayList<BikePart> bps= new ArrayList(Reader.readFile(wareHouseName));
         ArrayList<BikePart> parts= new ArrayList(Reader.readFile(fileName));
         System.out.println(parts);
@@ -135,22 +151,36 @@ public class WareHouse {
 
     }
     
+    /**
+     * Sorts the parts in the arrayList by name using lambda expression.
+     */
     public void sortByName(){
         Collections.sort(bps, (BikePart bp1, BikePart bp2) -> bp1.getName().compareToIgnoreCase(bp2.getName()));
     }
     
+    /**
+     * Sorts parts by number
+     */
     public void sortByNum(){
         Collections.sort(bps);
     }
     
+    /**
+     * Returns true if the part is in the arrayList
+     * @param bp part you are looking for
+     * @return boolean
+     */
     public boolean hasPart(BikePart bp){
         if (bps.contains(bp))
             return true;
-        
         return false;
     }  
     
-    
+    /**
+     * Returns true if the part with that name is in the list.
+     * @param bpname name of part you are looking for
+     * @return  boolean.
+     */
     public boolean hasPart(String bpname){
         for(BikePart bp: bps){
             if(bp.getName().equals(bpname)){
@@ -160,17 +190,25 @@ public class WareHouse {
         
         return false;
     } 
-                    
-        public boolean hasPart(int bpname){
+    
+    /**
+     * Returns true if the part is in the list
+     * @param bpname the part number
+     * @return 
+     */
+    public boolean hasPart(int num){
         for(BikePart bp: bps){
-            if(bp.getNum()==(bpname)){
+            if(bp.getNum()==(num)){
                 return true;
             }
         }
-        
         return false;
     }
-        
+    
+    /**
+     * Returns the string that is used to output the warehouse and it's parts.
+     * @return 
+     */    
     public String printWH(){
         String out = "WareHouse Name: "+ wareHouseName+"\n";
         for(BikePart bp: bps){
@@ -178,6 +216,12 @@ public class WareHouse {
         }
         return out;
     }
+    
+    /**
+     * Writes the name of the wh to the fleet file.
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException 
+     */
     public void writeToFleet() throws FileNotFoundException, UnsupportedEncodingException{
         PrintWriter p= new PrintWriter("fleet.txt","UTF-8");
         p.println(wareHouseName);

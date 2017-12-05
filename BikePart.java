@@ -148,6 +148,11 @@ public class BikePart implements Comparable<BikePart> {
             return listPrice;
     }
     
+    /**
+     * Compares bike parts by part number.
+     * @param bp1 the part in question.
+     * @returns 1 if greater, -1 if less, 0 if same.
+     */
     @Override
     public int compareTo(BikePart bp1) {
         if(this.partNum == bp1.partNum){

@@ -9,30 +9,65 @@ import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 
 /**
- *
+ * Holds the information for a wareHouse Manager mainly a warehouse to use.
  * @author jacobpetersen
  */
 public class WHManager extends User {
-    private WareHouse manWH;
-    
 
+    private WareHouse manWH;
+
+    /**
+     * constructs a WareHouse object.
+     * @param f USER INPUTS
+     * @param l
+     * @param e
+     * @param u
+     * @param p
+     * @param t
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException 
+     */
     public WHManager(String f, String l, String e, String u, String p, String t) throws FileNotFoundException, UnsupportedEncodingException {
-        super(f, l, e, u, p,t);
-        manWH= new WareHouse(u);
-        
+        super(f, l, e, u, p, t);
+        manWH = new WareHouse(u);
+
     }
-    public void fillWH(String WHName) throws FileNotFoundException, UnsupportedEncodingException{
-        manWH=new WareHouse(WHName);
+
+    /**
+     * fills the Warehouse based on the file of the warehouse
+     * @param WHName
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException 
+     */
+    public void fillWH(String WHName) throws FileNotFoundException, UnsupportedEncodingException {
+        manWH = new WareHouse(WHName);
         //call this every time you open a warehouse manager window
     }
-    public void updateWH(String fileName){
+
+    /**
+     * updates the WH
+     * @param fileName 
+     */
+    public void updateWH(String fileName) {
         manWH.read(fileName);
     }
-    public BikePart displayByName(String s){
+
+    /**
+     * returns the bikePart with the name s.
+     * @param s
+     * @return 
+     */
+    public BikePart displayByName(String s) {
         return manWH.findPartName(s);
     }
-    public BikePart displayByNum(int n){
+
+    /**
+     * returns the part with the number n.
+     * @param n
+     * @return 
+     */
+    public BikePart displayByNum(int n) {
         return manWH.findPartNum(n);
-    }   
-    
+    }
+
 }
