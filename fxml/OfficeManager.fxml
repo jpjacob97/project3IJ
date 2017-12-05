@@ -36,5 +36,7 @@
             <Image url="@boat-2024402_960_720.png" />
          </image>
       </ImageView>
+      <TextField fx:id="minimumField" layoutX="375.0" layoutY="326.0" prefHeight="27.0" prefWidth="39.0" />
+      <Text layoutX="429.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum" />
    </children>
 </AnchorPane>

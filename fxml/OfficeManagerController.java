@@ -1,16 +1,22 @@
 package fxml;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import projtwo.BikePart;
 import projtwo.Employee;
 import projtwo.Fleet;
@@ -40,6 +46,9 @@ public class OfficeManagerController {
 
     @FXML
     private TextField genComField;
+    
+    @FXML
+    private TextField minimumField;
 
     @FXML
     private TextArea output;
@@ -49,18 +58,21 @@ public class OfficeManagerController {
 
     @FXML
     private DatePicker endDate;
+    
 
     @FXML
     void handleCheckMin(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
-        int min=5;
+        int min=Integer.parseInt(minimumField.getText());
         Fleet fleet=new Fleet();
         ArrayList<WareHouse> fleetlist = fleet.getFleet();
         for(WareHouse wh: fleetlist){
+            output.appendText(wh.getName()+"\n");
             for(BikePart bp: wh.getList()){
                 if (bp.getQuantity() < min){
-                    output.appendText(bp.getName()+","+wh.getName()+","+bp.getQuantity()+"\n");
+                    output.appendText("Part:"+bp.getName()+"   Quantity:"+bp.getQuantity()+"\n");
                 }
             }
+            output.appendText("--------------------------------\n");
                 
         }
         
@@ -104,5 +116,6 @@ public class OfficeManagerController {
         
         
     }
+
 
 }
