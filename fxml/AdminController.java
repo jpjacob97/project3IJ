@@ -81,22 +81,22 @@ public class AdminController {
              WareHouse wh=new WareHouse(userNameField.getText()+".txt");
              f.addWH(wh);
              wh.writeToFleet();
-             output.appendText("WHMan Created: "+uh.toString()+"\n");
+             output.appendText("Created: "+uh.toString()+"\n");
          }
          if(OfficeManagerCheck.isSelected()){
             User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"OfficeManager");    
              employed.addUser(uh);
-             output.appendText("OfficeManager Created: "+uh.toString()+"\n");             
+             output.appendText("Created: "+uh.toString()+"\n");             
          }
          if(AdminCheck.isSelected()){
             User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"Admin");    
              employed.addUser(uh);
-             output.appendText("Admin Created: "+uh.toString()+"\n");             
+             output.appendText("Created: "+uh.toString()+"\n");             
          }
          if(SalesAssociateCheck.isSelected()){
             User uh = new User(firstNameField.getText(),lastNameField.getText(),emailField.getText(),userNameField.getText(),passwordField.getText(),"SalesAss");    
              employed.addUser(uh);
-             output.appendText("WHMan Created: "+uh.toString()+"\n");             
+             output.appendText("Created: "+uh.toString()+"\n");             
          }
 
 

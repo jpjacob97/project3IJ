@@ -3,6 +3,7 @@ package projtwo.fxml;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -73,10 +74,12 @@ public class SalesAssController {
 
     @FXML
     void handleSell(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
-        SalesAss sa = new SalesAss("f","s","e",whuName.getText()+".txt","s","s");
+        SalesAss sa = new SalesAss(usernametext,"s","e",whuName.getText()+".txt","s","s");
         sa.sell(partNameSell.getText(),Integer.parseInt(quantity.getText()));
-        SalesItem safound = sa.findSItem(partNameSell.getText());
-        output.appendText(safound.sellToString()+"\n");
+        WareHouse wh1 = sa.getWH();
+        Date now = new Date();
+        SalesItem sifound= new SalesItem(wh1.findPartName(partNameSell.getText()),Integer.parseInt(quantity.getText()),now);
+        output.appendText(sifound.sellToString()+"\n");
         
     }
 
