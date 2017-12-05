@@ -39,10 +39,11 @@ public class SalesAss extends User {
      * @throws UnsupportedEncodingException 
      */
     public SalesAss(String f, String l, String e, String u, String p, String t) throws FileNotFoundException, UnsupportedEncodingException {
-        super(f, l, e, u, p, t);
+        super(f, l, e, f, p, t);
         fillWH(u);
+        
 
-        sold = new Invoice(u);
+        sold = new Invoice(f);
 
     }
     /**
@@ -70,6 +71,7 @@ public class SalesAss extends User {
      * @throws FileNotFoundException
      * @throws UnsupportedEncodingException 
      */
+    
     public void fillWH(String WHName) throws FileNotFoundException, UnsupportedEncodingException {
         saWH = new WareHouse(WHName);
         //call this every time you open a warehouse manager window

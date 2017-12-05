@@ -63,6 +63,7 @@ public class Fleet {
      * @param wh 
      */
     public void addWH(WareHouse wh) {
+        
         fleet.add(wh);
     }
     
@@ -71,7 +72,7 @@ public class Fleet {
      * @param fileName The name of the swap file
      * @throws FileNotFoundException 
      */
-    public void swap(String fileName) throws FileNotFoundException {
+    public void swap(String fileName) throws FileNotFoundException, UnsupportedEncodingException {
         File file = new File(fileName);
         Scanner read = new Scanner(file);
 
@@ -98,7 +99,15 @@ public class Fleet {
 
                 } //makes part in toWH
                 else {
-                    BikePart bp1 = new BikePart(fromWH.findPartName(bpName).getName(), fromWH.findPartName(bpName).getNum(), fromWH.findPartName(bpName).getListPrice(), fromWH.findPartName(bpName).getSalePrice(), fromWH.findPartName(bpName).isOnSale(), quan);
+                    String pn=fromWH.findPartName(bpName).getName();
+                    int pnum=fromWH.findPartName(bpName).getNum();
+                    double lp= fromWH.findPartName(bpName).getListPrice();
+                    double sp=fromWH.findPartName(bpName).getSalePrice();
+                    boolean os=fromWH.findPartName(bpName).isOnSale();
+                   
+                    
+                    
+                    BikePart bp1 = new BikePart(pn,pnum,lp,sp,os,quan);
                     System.out.println("thisq");
                     toWH.addPart(bp1);
 
@@ -111,7 +120,7 @@ public class Fleet {
             }
             fromWH.updateFile();
             toWH.updateFile();
-
+            
         }
     }
 

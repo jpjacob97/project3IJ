@@ -223,7 +223,19 @@ public class WareHouse {
      * @throws UnsupportedEncodingException 
      */
     public void writeToFleet() throws FileNotFoundException, UnsupportedEncodingException{
+
+        ArrayList<String> retList = new ArrayList();
+        File f= new File("fleet.txt");
+        Scanner read = new Scanner(f);
+        System.out.println(f.getName());
+        
+        while (read.hasNextLine()) {
+            retList.add(read.nextLine());
+        }
         PrintWriter p= new PrintWriter("fleet.txt","UTF-8");
+        for(String s:retList){
+            p.println(s);
+        }
         p.println(wareHouseName);
         p.close();
     }
